@@ -12,7 +12,7 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx ./src"
   },
   "keywords": [
-    "automatic",
+    "animated",
     "typing",
     "react",
     "component"
