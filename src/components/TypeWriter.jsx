@@ -1,6 +1,9 @@
 import React from 'react';
 import {styleComponentSubstring, componentTokenAt} from '../utils';
 
+/**
+ * TypeWriter
+ */
 class TypeWriter extends React.Component {
 
   constructor(props) {

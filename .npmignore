@@ -2,4 +2,4 @@ src
 index.html
 *.tgz
 webpack.config.js
-.eslintrc
+.eslint*

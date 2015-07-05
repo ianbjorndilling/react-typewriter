@@ -76,7 +76,8 @@ export var styleComponentSubstring = (() => {
    * Styles the in any text nodes that are decendants of the component
    * if they fall within the specified range. Ranges are relative to
    * all the text within the component including text in decendant nodes.
-   * A specific characters index is calculated depth first.
+   * A specific characters index is calculated as the number of all characters
+   * indexed before it in an pre-order traversal of the tree minus one.
    *
    * Example:
    * styleComponentSubstring(<p>Hello <a>World</a></p>, {color: 'blue'}, 3, 8);

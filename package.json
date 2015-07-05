@@ -4,7 +4,6 @@
   "description": "React components for automatic typing effects.",
   "main": "./build/react-typewriter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "npm run build",
     "build": "./node_modules/.bin/webpack -p",
     "dev-build": "./node_modules/.bin/webpack -d --progress --colors",
@@ -24,6 +23,7 @@
     "react": "^0.13.3"
   },
   "devDependencies": {
+    "babel": "^5.6.14",
     "babel-core": "^5.6.15",
     "babel-eslint": "^3.1.20",
     "babel-loader": "^5.2.2",
