@@ -56,7 +56,7 @@ class TypeWriter extends React.Component {
         nextToken = componentTokenAt(this, this.state.visibleChars);
 
     if (token && onTyped) {
-      onTyped(token);
+      onTyped(token, prevState.visibleChars);
     }
 
     // check the delay map for additional delays at the index.
