@@ -103,7 +103,7 @@ var delays = [{
 type: `Function`
 default: `none`
 
-This callback is called when each token is typed in the typing animation. If the animation is erasing, it is called after each token is erased. The token that was typed/erased is passed as a parameter in the callback. The token may be either a character or a React component.
+This callback is called when each token is typed in the typing animation. If the animation is erasing, it is called after each token is erased. The token that was typed/erased is passed as the first parameter in the callback. The token may be either a character or a React component. Will also pass the previous number of visible characters.
 
 #### props.onTypingEnd
 
