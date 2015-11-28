@@ -4,7 +4,12 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   externals: {
-    react: 'React'
+    react: {
+      root: 'React',
+      amd: 'react',
+      commonjs: 'react',
+      commonjs2: 'react'
+    }
   },
   output: {
     path: './build',
