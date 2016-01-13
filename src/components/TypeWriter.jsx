@@ -153,6 +153,4 @@ TypeWriter.defaultProps = {
 
 };
 
-TypeWriter.displayName = 'TypeWriter';
-
 export default TypeWriter;
