@@ -1,6 +1,6 @@
 {
   "name": "react-typewriter",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "React components for automatic typing effects.",
   "main": "./build/react-typewriter.js",
   "scripts": {
