@@ -21,7 +21,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /(node_modules)/,
-      loader: 'babel?stage=1'
+      loader: 'babel?presets[]=react,presets[]=es2015,plugins[]=transform-object-rest-spread'
     }]
   }
 };
