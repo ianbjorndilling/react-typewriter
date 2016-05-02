@@ -35,7 +35,7 @@ class TypeWriter extends React.Component {
       this.setState({
         visibleChars: this.state.visibleChars - 1
       });
-    } else if (active < 0 && next > 0) {
+    } else if (active <= 0 && next > 0) {
       this.setState({
         visibleChars: this.state.visibleChars + 1
       });
