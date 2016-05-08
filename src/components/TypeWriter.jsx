@@ -31,17 +31,13 @@ class TypeWriter extends React.Component {
     let next = nextProps.typing,
         active = this.props.typing;
 
-    if (active > 0 && next === -1) {
+    if (active > 0 && next < 0) {
       this.setState({
         visibleChars: this.state.visibleChars - 1
       });
     } else if (active <= 0 && next > 0) {
       this.setState({
         visibleChars: this.state.visibleChars + 1
-      });
-    } else if (next === -2) {
-      this.setState({
-        visibleChars: 0
       });
     }
 
@@ -95,6 +91,12 @@ class TypeWriter extends React.Component {
 
   }
 
+  reset() {
+    this.setState({
+      visibleChars: 0
+    });
+  }
+
   render() {
 
     let {children, fixed, delayMap, typing, maxDelay, minDelay, ...props} = this.props,
@@ -113,7 +115,7 @@ class TypeWriter extends React.Component {
         {visibleChars} = this.state;
 
     this.setState({
-      visibleChars: Math.max(0, visibleChars + typing)
+      visibleChars: visibleChars + typing
     });
 
   }
@@ -135,8 +137,8 @@ TypeWriter.propTypes = {
 
     let prop = props[propName];
 
-    if (!(Number(prop) === prop && prop % 1 === 0) || (prop < -2 || prop > 1)) {
-      return new Error('typing property must be an integer between -2 and 1');
+    if (!(Number(prop) === prop && prop % 1 === 0) || (prop < -1 || prop > 1)) {
+      return new Error('typing property must be an integer between 1 and -1');
     }
 
   },
