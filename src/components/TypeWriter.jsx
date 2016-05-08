@@ -91,6 +91,12 @@ class TypeWriter extends React.Component {
 
   }
 
+  reset() {
+    this.setState({
+      visibleChars: 0
+    });
+  }
+
   render() {
 
     let {children, fixed, delayMap, typing, maxDelay, minDelay, ...props} = this.props,

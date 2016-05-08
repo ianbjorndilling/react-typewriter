@@ -127,6 +127,13 @@ Here, `World!` will be stamped onto the page instead of typed out:
 </TypeWriter>
 ```
 
+### refs.reset
+
+type: `Function`
+
+This function can be called in order to *erase* the text immediately.
+
+
 License
 -------
 
