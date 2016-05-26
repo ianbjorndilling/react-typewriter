@@ -101,7 +101,7 @@ class TypeWriter extends React.Component {
     const {
       visibleChars
     } = this.state;
-    const container = <span {...props}>{children}</span>;
+    const container = <div {...props}>{children}</div>;
     const hideStyle = fixed ? {visibility: 'hidden'} : {display: 'none'};
 
     return styleComponentSubstring(container, hideStyle, visibleChars);
