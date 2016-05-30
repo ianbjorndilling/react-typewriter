@@ -96,15 +96,18 @@ class TypeWriter extends React.Component {
     const {
       children,
       fixed,
+      container,
       ...props
     } = this.props;
     const {
       visibleChars
     } = this.state;
-    const container = <div {...props}>{children}</div>;
+
+    const Container = container;
+    const containerComponent = <Container {...props}>{children}</Container>;
     const hideStyle = fixed ? {visibility: 'hidden'} : {display: 'none'};
 
-    return styleComponentSubstring(container, hideStyle, visibleChars);
+    return styleComponentSubstring(containerComponent, hideStyle, visibleChars);
   }
 
   _handleTimeout() {
@@ -137,13 +140,15 @@ TypeWriter.propTypes = {
   maxDelay: React.PropTypes.number,
   minDelay: React.PropTypes.number,
   onTypingEnd: React.PropTypes.func,
-  onTyped: React.PropTypes.func
+  onTyped: React.PropTypes.func,
+  container: React.PropTypes.string
 };
 
 TypeWriter.defaultProps = {
   typing: 0,
   maxDelay: 100,
-  minDelay: 20
+  minDelay: 20,
+  container: 'span'
 };
 
 export default TypeWriter;
