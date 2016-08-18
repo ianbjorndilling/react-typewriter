@@ -16,7 +16,7 @@ class TypeWriter extends React.Component {
   }
 
   componentDidMount() {
-    this._timeoutId = setTimeout(this._handleTimeout, 1000);
+    this._timeoutId = setTimeout(this._handleTimeout, this.props.initDelay);
   }
 
   componentWillUnmount() {
@@ -142,6 +142,7 @@ TypeWriter.propTypes = {
 
 TypeWriter.defaultProps = {
   typing: 0,
+  initDelay: 1000,
   maxDelay: 100,
   minDelay: 20
 };
