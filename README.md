@@ -55,6 +55,13 @@ default: `0`
 
 A value of 1 will cause the component type text left to right until completion. A value of -1 will cause the component to *erase* text right to left.
 
+#### props.initDelay
+
+type: `Integer`
+default: `1000`
+
+Delay before typing begins in milliseconds.
+
 #### props.maxDelay
 
 type: `Integer`
