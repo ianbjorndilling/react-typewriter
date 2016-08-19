@@ -1,6 +1,30 @@
 import React from 'react';
 import {styleComponentSubstring, componentTokenAt} from '../utils';
 
+const propTypes = {
+  fixed: React.PropTypes.bool,
+  delayMap: React.PropTypes.arrayOf(React.PropTypes.shape({
+    at: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number,
+      React.PropTypes.instanceOf(RegExp)
+    ]),
+    delay: React.PropTypes.number
+  })),
+  typing(props, propName) {
+    const prop = props[propName];
+
+    if (!(Number(prop) === prop && prop % 1 === 0) || (prop < -1 || prop > 1)) {
+      return new Error('typing property must be an integer between 1 and -1');
+    }
+  },
+  maxDelay: React.PropTypes.number,
+  minDelay: React.PropTypes.number,
+  onTypingEnd: React.PropTypes.func,
+  onTyped: React.PropTypes.func,
+  container: React.PropTypes.string
+};
+
 /**
  * TypeWriter
  */
@@ -93,18 +117,26 @@ class TypeWriter extends React.Component {
   }
 
   render() {
-    const {
+    let {
       children,
       fixed,
-      ...props
+      container,
+      ...otherProps
     } = this.props;
     const {
       visibleChars
     } = this.state;
-    const container = <span {...props}>{children}</span>;
+
+    const Container = container;
     const hideStyle = fixed ? {visibility: 'hidden'} : {display: 'none'};
 
-    return styleComponentSubstring(container, hideStyle, visibleChars);
+    for (let key of Object.keys(propTypes)) {
+      delete otherProps[key];
+    }
+
+    const containerComponent = <Container {...otherProps}>{children}</Container>;
+
+    return styleComponentSubstring(containerComponent, hideStyle, visibleChars);
   }
 
   _handleTimeout() {
@@ -117,34 +149,14 @@ class TypeWriter extends React.Component {
   }
 }
 
-TypeWriter.propTypes = {
-  fixed: React.PropTypes.bool,
-  delayMap: React.PropTypes.arrayOf(React.PropTypes.shape({
-    at: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number,
-      React.PropTypes.instanceOf(RegExp)
-    ]),
-    delay: React.PropTypes.number
-  })),
-  typing(props, propName) {
-    const prop = props[propName];
-
-    if (!(Number(prop) === prop && prop % 1 === 0) || (prop < -1 || prop > 1)) {
-      return new Error('typing property must be an integer between 1 and -1');
-    }
-  },
-  maxDelay: React.PropTypes.number,
-  minDelay: React.PropTypes.number,
-  onTypingEnd: React.PropTypes.func,
-  onTyped: React.PropTypes.func
-};
+TypeWriter.propTypes = propTypes;
 
 TypeWriter.defaultProps = {
   typing: 0,
   initDelay: 1000,
   maxDelay: 100,
-  minDelay: 20
+  minDelay: 20,
+  container: 'span'
 };
 
 export default TypeWriter;

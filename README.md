@@ -134,6 +134,13 @@ Here, `World!` will be stamped onto the page instead of typed out:
 </TypeWriter>
 ```
 
+### props.container
+
+type: `String`
+default: `span`
+
+The can be used to determine the component to be used as a container for `react-typewriter`.
+
 ### refs.reset
 
 type: `Function`
