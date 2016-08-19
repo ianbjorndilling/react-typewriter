@@ -1,3 +1,3 @@
-import TypeWriter from './components/TypeWriter';
+import TypeWriter from './components/TypeWriter.jsx';
 
 export default TypeWriter;
