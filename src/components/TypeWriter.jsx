@@ -20,7 +20,7 @@ class TypeWriter extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this._timeoutId);
+    clearTimeout(this._timeoutId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,10 +28,12 @@ class TypeWriter extends React.Component {
     const active = this.props.typing;
 
     if (active > 0 && next < 0) {
+      clearTimeout(this._timeoutId);
       this.setState({
         visibleChars: this.state.visibleChars - 1
       });
     } else if (active <= 0 && next > 0) {
+      clearTimeout(this._timeoutId);
       this.setState({
         visibleChars: this.state.visibleChars + 1
       });
