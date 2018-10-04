@@ -16,7 +16,9 @@ class TypeWriter extends React.Component {
   }
 
   componentDidMount() {
-    this._timeoutId = setTimeout(this._handleTimeout, this.props.initDelay);
+    if (this.props.onTypingStart) {
+      this._timeoutId = setTimeout(this._handleTimeout, this.props.initDelay);
+    }
   }
 
   componentWillUnmount() {
@@ -26,6 +28,12 @@ class TypeWriter extends React.Component {
   componentWillReceiveProps(nextProps) {
     const next = nextProps.typing;
     const active = this.props.typing;
+    const nextOnTypingStart = nextProps.onTypingStart
+    const prevOnTypingStart = this.props.onTypingStart
+
+    if (nextOnTypingStart !== prevOnTypingStart) {
+      this._timeoutId = setTimeout(this._handleTimeout, this.props.initDelay);
+    }
 
     if (active > 0 && next < 0) {
       this.setState({
@@ -137,14 +145,16 @@ TypeWriter.propTypes = {
   maxDelay: React.PropTypes.number,
   minDelay: React.PropTypes.number,
   onTypingEnd: React.PropTypes.func,
-  onTyped: React.PropTypes.func
+  onTyped: React.PropTypes.func,
+  onTypingStart: React.PropTypes.bool
 };
 
 TypeWriter.defaultProps = {
   typing: 0,
   initDelay: 1000,
   maxDelay: 100,
-  minDelay: 20
+  minDelay: 20,
+  onTypingStart: true
 };
 
 export default TypeWriter;

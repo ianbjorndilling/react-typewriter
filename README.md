@@ -55,6 +55,14 @@ default: `0`
 
 A value of 1 will cause the component type text left to right until completion. A value of -1 will cause the component to *erase* text right to left.
 
+#### props.onTypingStart
+
+type: `Boolean`
+default: `true`
+
+This value is a typing start Timing control. if the user set false fro this props initially,  
+when the value trun out to be false, typing starts.
+
 #### props.initDelay
 
 type: `Integer`
