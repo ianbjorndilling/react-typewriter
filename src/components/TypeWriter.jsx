@@ -28,10 +28,12 @@ class TypeWriter extends React.Component {
     const active = this.props.typing;
 
     if (active > 0 && next < 0) {
+      clearInterval(this._timeoutId);
       this.setState({
         visibleChars: this.state.visibleChars - 1
       });
     } else if (active <= 0 && next > 0) {
+      clearInterval(this._timeoutId);
       this.setState({
         visibleChars: this.state.visibleChars + 1
       });
@@ -103,20 +105,16 @@ class TypeWriter extends React.Component {
     } = this.state;
     const container = <span {...props}>{children}</span>;
     const hideStyle = fixed ? {visibility: 'hidden'} : {display: 'none'};
-
+    
     return styleComponentSubstring(container, hideStyle, visibleChars);
   }
 
   _handleTimeout() {
     const {typing} = this.props;
     const {visibleChars} = this.state;
-    
-    let visible = visibleChars
-
-    if (visible < -1) visible = -1
 
     this.setState({
-      visibleChars: visible + typing
+      visibleChars: visibleChars + typing
     });
   }
 }
