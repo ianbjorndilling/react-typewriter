@@ -110,9 +110,13 @@ class TypeWriter extends React.Component {
   _handleTimeout() {
     const {typing} = this.props;
     const {visibleChars} = this.state;
+    
+    let visible = visibleChars
+
+    if (visible < -1) visible = -1
 
     this.setState({
-      visibleChars: visibleChars + typing
+      visibleChars: visible + typing
     });
   }
 }
